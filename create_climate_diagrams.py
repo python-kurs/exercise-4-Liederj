@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
 # Import both data tables into python using pandas. Set the index column to "MESS_DATUM" and parse the column values as dates. [1P]
-garmisch  = pd.read_csv("data/produkt_klima_tag_20171010_20190412_01550.txt", sep = ";", index_col="MESS_DATUM",
+garmisch  = pd.read_csv("./data/produkt_klima_tag_20171010_20190412_01550.txt", sep = ";", index_col="MESS_DATUM",
                         parse_dates=["MESS_DATUM"], na_values=-999)
-zugspitze = pd.read_csv("data/produkt_klima_tag_20171010_20190412_05792.txt", sep = ";", index_col="MESS_DATUM",
+zugspitze = pd.read_csv("./data/produkt_klima_tag_20171010_20190412_05792.txt", sep = ";", index_col="MESS_DATUM",
                         parse_dates=["MESS_DATUM"], na_values=-999)
 
 # Clip the tables to the year 2018: [1P]
@@ -13,8 +13,8 @@ garmisch  = garmisch.loc["2018"]
 zugspitze = zugspitze.loc["2018"]
 
 # Resample the temperature data to monthly averages (" TMK") and the precipitation data to monthly sums (" RSK"): [1P]
-garmisch_agg  = list(garmisch.resample("1M").mean()["TMK"])
-zugspitze_agg = list(zugspitze.resample("1M").mean()["TMK"])
+garmisch_agg  = list(garmisch.resample("1M").mean()[" TMK"])
+zugspitze_agg = list(zugspitze.resample("1M").mean()[" TMK"])
 
 # Define a plotting function that draws a simple climate diagram
 # Add the arguments as mentioned in the docstring below [1P]
